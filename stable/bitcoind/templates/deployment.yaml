@@ -20,7 +20,6 @@ spec:
         app: {{ template "bitcoind.name" . }}
         release: {{ .Release.Name }}
     spec:
-      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       {{- if .Values.configurationFile }}
       initContainers:
         - name: copy-bitcoind-config
@@ -47,6 +46,10 @@ spec:
               containerPort: {{ .Values.service.testnetPort }}
             - name: testnetp2pport
               containerPort: {{ .Values.service.testnetP2pPort }}
+            - name: zmqBlock
+              containerPort: {{ .Values.service.zmqBlockPort }}
+            - name: zmqTx
+              containerPort: {{ .Values.service.zmqTxPort }}
           volumeMounts:
             - name: data
               mountPath: /bitcoin

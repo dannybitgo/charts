@@ -1,9 +1,9 @@
 # Default values for bitcoind.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-terminationGracePeriodSeconds: 30
+
 image:
-  repository: arilot/docker-bitcoind
+  repository: jamesob/bitcoind
   tag: 0.17.1
   pullPolicy: IfNotPresent
 
@@ -12,6 +12,8 @@ service:
   p2pPort: 8333
   testnetPort: 18332
   testnetP2pPort: 18333
+  zmqBlockPort: 18500
+  zmqTxPort: 18501
 
 persistence:
   enabled: true
@@ -41,3 +43,5 @@ configurationFile:
     printtoconsole=1
     rpcuser=rpcuser
     rpcpassword=rpcpassword
+    zmqpubrawblock=tcp://0.0.0.0:18500
+    zmqpubrawtx=tcp://0.0.0.0:18501
