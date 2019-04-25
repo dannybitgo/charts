@@ -27,7 +27,7 @@ spec:
     - name: zmqtx
       port: {{ .Values.service.zmqTxPort }}
       targetPort: zmqtx
-    type: NodePort
+  type: NodePort
   selector:
     app: {{ template "bitcoind.name" . }}
     release: {{ .Release.Name }}
