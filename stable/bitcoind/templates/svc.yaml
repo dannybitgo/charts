@@ -17,12 +17,16 @@ spec:
       targetPort: p2p
     - name: testnet
       port: {{ .Values.service.testnetPort }}
+      targetPort: testnet
     - name: testnet-p2p
       port: {{ .Values.service.testnetP2pPort }}
+      targetPort: testnetp2pport
     - name: zmqblock
       port: {{ .Values.service.zmqBlockPort }}
+      targetPort: zmqblock
     - name: zmqtx
       port: {{ .Values.service.zmqTxPort }}
+      targetPort: zmqtx
   selector:
     app: {{ template "bitcoind.name" . }}
     release: {{ .Release.Name }}
